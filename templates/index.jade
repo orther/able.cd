@@ -5,14 +5,8 @@ block content
     include _article
     mixin article-intro(article)
 
-block prepend footer
-  div.nav
+  .pager
     if prevPage
-      a(href=prevPage.url) « Newer
-    else
-      a(href='/archive.html') « Archives
+      a(href=prevPage.url).button.previous « Newer Posts
     if nextPage
-      a(href=nextPage.url) Next page »
-
-
-
+      a(href=nextPage.url).button.next Older Posts »

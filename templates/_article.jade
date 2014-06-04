@@ -63,22 +63,3 @@ mixin article(article, isExcerpt)
 
 mixin article-intro(article)
   mixin article(article, true)
-//-
-  - var showAuthor = false
-
-  article.is-post.is-post-excerpt
-    header
-      h2
-        a(href=article.url)= article.title
-      if showAuthor
-        span.byline
-          mixin author(article.metadata.author)
-    .info
-      mixin info-date(article.date)
-      mixin info-stats()
-
-    | !{ typogr(article.intro).typogrify() }
-  //-
-    if article.hasMore
-      p.more
-        a(href=article.url) Read on →
