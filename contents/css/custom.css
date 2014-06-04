@@ -1,0 +1,104 @@
+  #sidebar a,
+  #sidebar a:visited
+  {
+    color: white;
+  }
+
+	#sidebar #logo,
+  html body #skel-panels-fixedWrapper .toggle:before
+	{
+    background-image: url('images/hexabump.png');
+		background-color: transparent;
+  }
+
+  #titleBar .title a,
+  #titleBarNarrower .title a,
+	#sidebar #logo a
+	{
+    color: white;
+    text-decoration: none;
+  }
+
+  #sidebar #mission
+  {
+    text-align: justify;
+    margin-top: .5em;
+  }
+  #sidebar #mission .inner
+  {
+    font-size: 18px;
+    padding: 8px 14px;
+    /* font-weight: 700; */
+  }
+
+  #sidePanel #sidebar #mission
+  {
+    display: none;
+  }
+
+
+  html.desktop article.is-post-excerpt {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') bottom left repeat-x;
+    padding-bottom: 2em;
+  }
+
+  /* Differentiate h2-h4 */
+  html.desktop .is-post:not(.is-post-excerpt) h3 {
+    font-size: 2em;
+    padding: 1em 0 .25em;
+    margin: 1em 0 0;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') top left repeat-x;
+  }
+  html.desktop .is-post h4 {
+    font-size: 1.5em;
+    padding: 1em 0 0;
+    margin-bottom: .5em;
+  }
+  html.mobile .is-post:not(.is-post-excerpt) h3 {
+    font-size: 1.3em;
+    padding: 1em 0 .25em;
+    margin: 1em 0 0;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') top left repeat-x;
+  }
+  html.mobile .is-post:not(.is-post-excerpt) h4 {
+    font-size: 1em;
+    padding: 1em 0 0;
+    margin-bottom: .5em;
+  }
+
+  /* Show year in info date panel in desktop wide view */
+  html.desktop.wide .is-post .info .date .year
+  {
+    display: block;
+  }
+  html.desktop.wide .is-post .info .date .day
+  {
+    margin: 0.25em 0;
+  }
+  html.desktop.wide .is-post .info .date .year .comma
+  {
+    display: none;
+  }
+
+  html body ol {
+    list-style-type: decimal;
+  }
+
+  /* Correct Code Blocks */
+  pre code
+  {
+    overflow: auto;
+    margin-bottom: 1.25em;
+  }
+
+
+  /* Customize button style on content page area */
+  #content #content-inner a.button
+  {
+    background-color: rgba(255, 255, 255, 0.15);
+    background-image: url('images/hexabump.png');
+  }
+  #content #content-inner a.button:hover
+  {
+    
+  }

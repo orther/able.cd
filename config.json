@@ -1,11 +1,56 @@
 {
+  "port": 4000,
   "locals": {
     "url": "http://hack.doom.lan:4000",
     "name": "ablecoder",
     "owner": "Brandon Orther",
-    "description": "Pursuing efficacy in the art of software development."
+    "mission": "Pursuing efficacy in the art of software development.",
+    "description": "A blog archiving my experiences in software development and everything related to it. This site is for public consumption but, I'm betting future-me is going to use it more than most.",
+    "index_articles": 3,
+    "menu" : [
+      {
+        "name": "Blog",
+        "description": "Blog",
+        "url": "/"
+      },
+      {
+        "inactive": true,
+        "name": "Github",
+        "description": "My Gihub profile",
+        "url": "https://github.com/orther"
+      },
+      {
+        "name": "About Me",
+        "description": "Information about me",
+        "url": "/about.html"
+      }
+    ],
+    "social": [
+      {
+        "name": "Github",
+        "url": "https://github.com/orther"
+      },
+      {
+        "name": "Twitter",
+        "url": "https://twitter.com/ablecoder"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/in/brandonorther"
+      },
+      {
+        "name": "Mail",
+        "url": "mailto:coder@able.cd"
+      }
+    ]
+  },
+  "blog": {
+    "postsDir": "articles",
+    "template": "article.jade",
+    "filenameTemplate": "/b/:year/:month/:day/:title/index.html"
   },
   "plugins": [
+    "./plugins/blog.coffee",
     "./plugins/paginator.coffee"
   ],
   "require": {

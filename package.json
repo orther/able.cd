@@ -9,11 +9,14 @@
     "typogr": "0.5.x"
   },
   "devDependencies": {
-    "wintersmith-nunjucks": "~0.5.0",
     "gulp-clean": "~0.3.0",
     "gulp-livereload": "~2.0.0",
     "run-wintersmith": "0.0.2",
-    "tiny-lr": "0.0.7"
+    "tiny-lr": "0.0.7",
+    "wintersmith": "~2.0.10",
+    "gulp-debug": "~0.3.0",
+    "cheerio": "~0.16.0",
+    "marked": "~0.3.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

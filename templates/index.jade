@@ -1,28 +1,12 @@
 extends layout
 
 block content
-  include author
   each article in articles
-    article.article.intro
-      header
-        p.date
-          span= moment.utc(article.date).format('DD. MMMM YYYY')
-        h2
-          a(href=article.url)= article.title
-      section.content
-        | !{ typogr(article.intro).typogrify() }
-        if article.hasMore
-          p.more
-            a(href=article.url) more
+    include _article
+    mixin article-intro(article)
 
-block prepend footer
-  div.nav
+  .pager
     if prevPage
-      a(href=prevPage.url) « Newer
-    else
-      a(href='/archive.html') « Archives
+      a(href=prevPage.url).button.previous « Newer Posts
     if nextPage
-      a(href=nextPage.url) Next page »
-
-
-
+      a(href=nextPage.url).button.next Older Posts »
