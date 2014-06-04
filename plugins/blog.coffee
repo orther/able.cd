@@ -16,7 +16,7 @@ module.exports = (env, callback) ->
     ### DRYer subclass of MarkdownPage ###
 
     getHtml: (base) ->
-      ### return html with all relative img tag urls corrected
+      ### return html with all relative img tag urls corrected ###
       html          = super base
       imgUrlFind    = path.dirname @getFilename()
       imgUrlReplace = path.dirname @filepath.relative
