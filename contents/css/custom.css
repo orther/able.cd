@@ -1,4 +1,11 @@
-	#sidebar #logo
+  #sidebar a,
+  #sidebar a:visited
+  {
+    color: white;
+  }
+
+	#sidebar #logo,
+  body #titleBar .toggle:before
 	{
     background-image: url('images/hexabump.png');
 		background-color: transparent;
@@ -15,6 +22,7 @@
   #sidebar #mission
   {
     text-align: justify;
+    margin-top: .5em;
   }
   #sidebar #mission .inner
   {
