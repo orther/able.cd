@@ -36,6 +36,30 @@
     display: none;
   }
 
+  /* Differentiate h2-h4 */
+  html.desktop .is-post h3 {
+    font-size: 2em;
+    padding: 1em 0 .25em;
+    margin: 1em 0 0;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') top left repeat-x;
+  }
+  html.desktop .is-post h4 {
+    font-size: 1.5em;
+    padding: 1em 0 0;
+    margin-bottom: .5em;
+  }
+  html.mobile .is-post h3 {
+    font-size: 1.3em;
+    padding: 1em 0 .25em;
+    margin: 1em 0 0;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') top left repeat-x;
+  }
+  html.mobile .is-post h4 {
+    font-size: 1em;
+    padding: 1em 0 0;
+    margin-bottom: .5em;
+  }
+
   /* Show year in info date panel in desktop wide view */
   html.desktop.wide .is-post .info .date .year
   {
@@ -52,4 +76,10 @@
 
   html body ol {
     list-style-type: decimal;
+  }
+
+  /* Correct Code Blocks */
+  pre code
+  {
+    overflow: auto;
   }
