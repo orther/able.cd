@@ -1,0 +1,53 @@
+mixin info-date(raw_date)
+  - var parsed_date = moment.utc(raw_date)
+  - var short_month_len = 3
+
+  - var day   = parsed_date.format('D')
+  - var month = parsed_date.format('MMMM')
+  - var year  = parsed_date.format('YYYY')
+
+  //
+      Note: The date should be formatted exactly as it's shown below. In particular, the
+      "least significant" characters of the month should be encapsulated in a <span>
+      element to denote what gets dropped in 1200px mode (eg. the "uary" in "January").
+      Oh, and if you don't need a date for a particular page or post you can simply delete
+      the entire "date" element.
+  span.date
+    span.month
+      = month.substr(0, short_month_len)
+      span= month.substr(short_month_len)
+      | 
+    span.day= day
+    span.year
+      |, 
+      = year
+
+
+mixin info-stats()
+  ul.stats
+    li
+      a.fa.fa-comment(href='#') 16
+    li
+      a.fa.fa-heart(href='#') 32
+    li
+      a.fa.fa-twitter(href='#') 64
+    li
+      a.fa.fa-facebook(href='#') 128
+
+
+mixin article(article)
+  .info
+    mixin info-date(article.date)
+    mixin info-stats()
+
+
+mixin article-intro(article)
+  .info
+    mixin info-date(article.date)
+    mixin info-stats()
+
+  | !{ typogr(article.intro).typogrify() }
+  article.intro
+  if article.hasMore
+    p.more
+      a(href=article.url) Read on →

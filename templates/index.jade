@@ -3,17 +3,16 @@ extends layout
 block content
   include author
   each article in articles
-    article.article.intro
+    article.is-post.is-post-excerpt
       header
-        p.date
-          span= moment.utc(article.date).format('DD. MMMM YYYY')
         h2
           a(href=article.url)= article.title
-      section.content
-        | !{ typogr(article.intro).typogrify() }
-        if article.hasMore
-          p.more
-            a(href=article.url) more
+        //-span.byline
+          | !!!AUTHOR DETAILS HERE!!!
+
+        include _article
+        mixin article-intro(article)
+
 
 block prepend footer
   div.nav
