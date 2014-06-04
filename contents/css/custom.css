@@ -36,8 +36,14 @@
     display: none;
   }
 
+
+  html.desktop article.is-post-excerpt {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') bottom left repeat-x;
+    padding-bottom: 2em;
+  }
+
   /* Differentiate h2-h4 */
-  html.desktop .is-post h3 {
+  html.desktop .is-post:not(.is-post-excerpt) h3 {
     font-size: 2em;
     padding: 1em 0 .25em;
     margin: 1em 0 0;
@@ -48,13 +54,13 @@
     padding: 1em 0 0;
     margin-bottom: .5em;
   }
-  html.mobile .is-post h3 {
+  html.mobile .is-post:not(.is-post-excerpt) h3 {
     font-size: 1.3em;
     padding: 1em 0 .25em;
     margin: 1em 0 0;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') top left repeat-x;
   }
-  html.mobile .is-post h4 {
+  html.mobile .is-post:not(.is-post-excerpt) h4 {
     font-size: 1em;
     padding: 1em 0 0;
     margin-bottom: .5em;
@@ -82,4 +88,5 @@
   pre code
   {
     overflow: auto;
+    margin-bottom: 1.25em;
   }
