@@ -30,7 +30,7 @@ Drive app and then rename it.
 
 3. Start Google Drive. You should see the below error message.
 
-    !['Google Drive start up error'](google-drive-start-error.png)
+    ![Google Drive start up error](google-drive-start-error.png)
 
 4. Click the Error at the top of the Google Drive menu.
 
