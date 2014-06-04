@@ -17,6 +17,9 @@ function getRandomNumber() {
 }
 ```
 
+<span class="more"></span>
+
+
 ### CoffeeScript
 
 ```coffeescript
@@ -111,9 +114,6 @@ int main(void)
     return 0;
 }
 ```
-
-<span class="more"></span>
-
 
 ### PHP
 

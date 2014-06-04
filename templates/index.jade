@@ -1,18 +1,9 @@
 extends layout
 
 block content
-  include author
   each article in articles
-    article.is-post.is-post-excerpt
-      header
-        h2
-          a(href=article.url)= article.title
-        //-span.byline
-          | !!!AUTHOR DETAILS HERE!!!
-
-        include _article
-        mixin article-intro(article)
-
+    include _article
+    mixin article-intro(article)
 
 block prepend footer
   div.nav

@@ -1,3 +1,5 @@
+include author
+
 mixin info-date(raw_date)
   - var parsed_date = moment.utc(raw_date)
   - var short_month_len = 3
@@ -35,19 +37,48 @@ mixin info-stats()
       a.fa.fa-facebook(href='#') 128
 
 
-mixin article(article)
-  .info
-    mixin info-date(article.date)
-    mixin info-stats()
+mixin article(article, isExcerpt)
+  //- full article defaults
+  - var showAuthor   = false
+  - var articleClass = false
+  - var articleBody  = article.html
+
+  if isExcerpt
+    - var showAuthor   = true
+    - var articleClass = 'is-post-excerpt'
+    - var articleBody  = article.intro
+
+  article(class=articleClass).is-post
+    header
+      h2
+        a(href=article.url)= article.title
+      if showAuthor
+        span.byline
+          mixin author(article.metadata.author)
+    .info
+      mixin info-date(article.date)
+      mixin info-stats()
+    | !{ typogr(articleBody).typogrify() }
 
 
 mixin article-intro(article)
-  .info
-    mixin info-date(article.date)
-    mixin info-stats()
+  mixin article(article, true)
+//-
+  - var showAuthor = false
 
-  | !{ typogr(article.intro).typogrify() }
-  article.intro
-  if article.hasMore
-    p.more
-      a(href=article.url) Read on →
+  article.is-post.is-post-excerpt
+    header
+      h2
+        a(href=article.url)= article.title
+      if showAuthor
+        span.byline
+          mixin author(article.metadata.author)
+    .info
+      mixin info-date(article.date)
+      mixin info-stats()
+
+    | !{ typogr(article.intro).typogrify() }
+  //-
+    if article.hasMore
+      p.more
+        a(href=article.url) Read on →
