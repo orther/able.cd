@@ -3,3 +3,27 @@
     background-image: url('images/hexabump.png');
 		background-color: transparent;
   }
+
+  #titleBar .title a,
+  #titleBarNarrower .title a,
+	#sidebar #logo a
+	{
+    color: white;
+    text-decoration: none;
+  }
+
+  #sidebar #mission
+  {
+    text-align: justify;
+  }
+  #sidebar #mission .inner
+  {
+    font-size: 18px;
+    padding: 8px 14px;
+    /* font-weight: 700; */
+  }
+
+  #sidePanel #sidebar #mission
+  {
+    display: none;
+  }

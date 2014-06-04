@@ -46,15 +46,12 @@ html(lang='en')
 
       #sidebar
         #logo
-          h1= locals.name
-          //-
+          h1
             a(href=locals.url)= locals.name
-            p.description= locals.description
 
-        section.is-text-style1
+        #mission.is-text-style1
           .inner
-            p.description
-              = locals.description
+            = locals.description
 
         nav#nav
           ul
