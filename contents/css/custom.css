@@ -49,3 +49,7 @@
   {
     display: none;
   }
+
+  html body ol {
+    list-style-type: decimal;
+  }
