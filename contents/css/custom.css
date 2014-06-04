@@ -35,3 +35,17 @@
   {
     display: none;
   }
+
+  /* Show year in info date panel in desktop wide view */
+  html.desktop.wide .is-post .info .date .year
+  {
+    display: block;
+  }
+  html.desktop.wide .is-post .info .date .day
+  {
+    margin: 0.25em 0;
+  }
+  html.desktop.wide .is-post .info .date .year .comma
+  {
+    display: none;
+  }

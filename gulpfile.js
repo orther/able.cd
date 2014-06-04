@@ -17,8 +17,8 @@ var lr = require('tiny-lr');
 var server = lr();
 
 // run-wintersmith Settings
-runWintersmith.settings.hostname = '0.0.0.0';
-runWintersmith.settings.port = 4004;
+runWintersmith.settings.hostname = 'hack.doom.lan';
+runWintersmith.settings.port = 4000;
 //runWintersmith.settings.configFile = 'myConfig.json';
 
 

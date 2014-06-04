@@ -1,13 +1,12 @@
 {
   "locals": {
-    "url": "http://hack.doom.lan:4004",
+    "url": "http://hack.doom.lan:4000",
     "name": "ablecoder",
     "owner": "Brandon Orther",
     "description": "Pursuing efficacy in the art of software development."
   },
   "plugins": [
-    "./plugins/paginator.coffee",
-    "wintersmith-tag"
+    "./plugins/paginator.coffee"
   ],
   "require": {
     "moment": "moment",

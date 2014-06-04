@@ -3,7 +3,7 @@ layout: post
 title: "The reason I blog: Future-Me"
 date: 2013-03-24 02:30
 comments: true
-categories: Monologue
+tags: Monologue
 author: orther
 template: article.jade
 ---
@@ -21,9 +21,8 @@ site.
 
 ### Blogging For Tomorrow!
 
-{% blockquote @AbleCoder https://twitter.com/#!/AbleCoder/status/183474986961485824 %}
-The older I get the more Future-Me likes the decisions Past-Me makes. In college, I was just an evil asshole to Future-Me.
-{% endblockquote %}
+> The older I get the more Future-Me likes the decisions Past-Me makes. In college, I was just an evil asshole to Future-Me.
+> <footer>__@AbleCoder__ - https://twitter.com/#!/AbleCoder/status/183474986961485824 </footer>
 
 As nice as it is to explore all these new projects it can be a time consuming process. A lot of that
 time spent is NOT playing with or testing the new technology, instead it is spent getting it setup.
@@ -41,11 +40,13 @@ content writing these articles for that bad-ass, good-looking, Future-Me.
 No one will see this site (for now anyways) so there is no harm in putting in this _codeblock_ for
 testing purposes.
 
-{% codeblock Example CoffeeScript Function Context Binding lang:coffeescript http://coffeescript.org/#fat_arrow Coffee Script - Function binding %}
+__*Example CoffeeScript Function Context Binding*__
+
+```coffeescript
 Account = (customer, cart) ->
     @customer = customer
     @cart = cart
 
     $('.shopping_cart').bind 'click', (event) =>
         @customer.purchase @cart
-{% endcodeblock %}
+```
