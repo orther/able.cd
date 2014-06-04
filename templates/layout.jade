@@ -63,8 +63,9 @@ html(lang='en')
               a(href='/about.html') About Me
 
         section.is-search
-          form(method='post', action='#')
-            input.text(type='text', name='search', placeholder='Search Site')
+          form(method='get', action='http://google.com/search')
+            input(type="hidden", name="q", value="site:able.cd")
+            input.text(type='text', name='q', results="0", placeholder='Search Site')
 
         //-section.is-recent-posts
           header

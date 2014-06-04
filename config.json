@@ -51,7 +51,6 @@
   },
   "plugins": [
     "./plugins/blog.coffee",
-    "./plugins/helpers.coffee",
     "./plugins/paginator.coffee"
   ],
   "require": {
