@@ -90,3 +90,15 @@
     overflow: auto;
     margin-bottom: 1.25em;
   }
+
+
+  /* Customize button style on content page area */
+  #content #content-inner a.button
+  {
+    background-color: rgba(255, 255, 255, 0.15);
+    background-image: url('images/hexabump.png');
+  }
+  #content #content-inner a.button:hover
+  {
+    
+  }
