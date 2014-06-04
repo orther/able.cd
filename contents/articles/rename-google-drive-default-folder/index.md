@@ -1,13 +1,7 @@
 ---
-layout: post
-title: "Rename Default Google Drive Folder"
+title: "Rename Google Drive Default Folder"
 date: 2012-05-28 15:09
-comments: true
-tags:
-- Google Drive
-- Quickie
 author: orther
-template: /article.jade
 ---
 
 After I recently moved all my local software project's repos into my Google Drive folder I started

@@ -1,11 +1,7 @@
 ---
-layout: post
 title: "The reason I blog: Future-Me"
 date: 2012-03-24 02:30
-comments: true
-tags: Monologue
 author: orther
-template: article.jade
 ---
 
 Well it's official, I'm starting to blog again. Recently I have been getting back into web

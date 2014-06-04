@@ -3,12 +3,6 @@ layout: post
 title: "Vagrant: Broken Networking When Packaging Ubuntu Boxes"
 date: 2012-04-09 18:25
 comments: true
-tags:
-- Vagrant
-- Ubuntu
-- Networking
-- VirtualBox
-- udev
 author: orther
 template: article.jade
 ---
