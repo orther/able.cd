@@ -5,7 +5,7 @@
   }
 
 	#sidebar #logo,
-  body #titleBar .toggle:before
+  html body #skel-panels-fixedWrapper .toggle:before
 	{
     background-image: url('images/hexabump.png');
 		background-color: transparent;

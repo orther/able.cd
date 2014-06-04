@@ -17,7 +17,7 @@ company's cross-platform mobile apps for the last 11-months) and its amazing how
 is out. That includes the blogging framework [Octopress 2.0](http://octopress.org/) I am using for this
 site.
 
-<!-- more -->
+<span class="more">
 
 ### Blogging For Tomorrow!
 

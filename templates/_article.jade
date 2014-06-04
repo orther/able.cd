@@ -21,7 +21,7 @@ mixin info-date(raw_date)
       | 
     span.day= day
     span.year
-      |, 
+      span.comma , 
       = year
 
 
@@ -44,7 +44,6 @@ mixin article(article, isExcerpt)
   - var articleBody  = article.html
 
   if isExcerpt
-    - var showAuthor   = true
     - var articleClass = 'is-post-excerpt'
     - var articleBody  = article.intro
 

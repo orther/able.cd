@@ -6,7 +6,8 @@
     "description": "Pursuing efficacy in the art of software development."
   },
   "plugins": [
-    "./plugins/paginator.coffee"
+    "./plugins/paginator.coffee",
+    "wintersmith-tag"
   ],
   "require": {
     "moment": "moment",
