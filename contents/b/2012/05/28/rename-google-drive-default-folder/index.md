@@ -7,7 +7,7 @@ tags:
 - Google Drive
 - Quickie
 author: orther
-template: article.jade
+template: /article.jade
 ---
 
 After I recently moved all my local software project's repos into my Google Drive folder I started
