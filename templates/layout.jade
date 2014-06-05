@@ -3,7 +3,7 @@ block vars
   - var bodyclass = null;
 html(lang='en')
   head
-    base(href=locals.url)
+    base(href="/")
     block head
       title
         block title
@@ -31,7 +31,7 @@ html(lang='en')
         link(rel='stylesheet', href='css/ie8.css')
       //if lte IE 7
         link(rel='stylesheet', href='css/ie7.css')
-      link(rel='alternate', href=locals.url+'/feed.xml', type='application/rss+xml', title=locals.description)
+      link(rel='alternate', href='/feed.xml', type='application/rss+xml', title=locals.description)
   //-
     Note: Set the body element's class to "left-sidebar" to position the sidebar on the left.
     Set it to "right-sidebar" to, you guessed it, position it on the right.

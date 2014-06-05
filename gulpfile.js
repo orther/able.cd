@@ -92,6 +92,6 @@ gulp.task('watch', ['preview', 'lr-server'], function(){
 // Deploy task
 //
 gulp.task('deploy', ['build'], function () {
-    gulp.src(BUILD_DIR + "/**")
+    return gulp.src(BUILD_DIR + '/**/*')
         .pipe(deploy());
 });

@@ -1,7 +1,7 @@
 {
   "port": 4000,
   "locals": {
-    "url": "http://hack.doom.lan:4000",
+    "url": "http://hack.able.cd",
     "name": "ablecoder",
     "owner": "Brandon Orther",
     "mission": "Pursuing efficacy in the art of software development.",
