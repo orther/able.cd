@@ -25,11 +25,11 @@ mixin info-date(raw_date)
       = year
 
 
+//- TODO: implement the working stats
 mixin info-stats()
   ul.stats
     li
       a.fa.fa-comment(href='#') 16
-  //-
     li
       a.fa.fa-heart(href='#') 32
     li
@@ -57,7 +57,7 @@ mixin article(article, isExcerpt)
           mixin author(article.metadata.author)
     .info
       mixin info-date(article.date)
-      mixin info-stats()
+      //-mixin info-stats()
     | !{ typogr(articleBody).typogrify() }
 
 

@@ -46,7 +46,7 @@
   /* Differentiate h2-h4 */
   html.desktop .is-post:not(.is-post-excerpt) h3 {
     font-size: 2em;
-    padding: 1em 0 .25em;
+    padding: 1em 0 .5em;
     margin: 1em 0 0;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') top left repeat-x;
   }
@@ -101,5 +101,9 @@
   }
   #content #content-inner a.button:hover
   {
-    
+  }
+
+  #content blockquote
+  {
+    margin-bottom: 1em;
   }
