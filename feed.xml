@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ablecoder</title>
-    <atom:link href="http://hack.doom.lan:4000/feed.xml" rel="self" type="application/rss+xml"></atom:link>
-    <link>http://hack.doom.lan:4000</link>
+    <atom:link href="http://hack.able.cd/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://hack.able.cd</link>
     <description>A blog archiving my experiences in software development and everything related to it. This site is for public consumption but, I'm betting future-me is going to use it more than most.</description>
     <pubDate>Mon, 28 May 2012 15:09:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
       <title>Rename Google Drive Default Folder</title>
-      <link>http://hack.doom.lan:4000/b/2012/05/28/rename-google-drive-default-folder/</link>
+      <link>http://hack.able.cd/b/2012/05/28/rename-google-drive-default-folder/</link>
       <pubDate>Mon, 28 May 2012 15:09:00 -0700</pubDate>
-      <guid isPermaLink="true">http://hack.doom.lan:4000/b/2012/05/28/rename-google-drive-default-folder/</guid>
+      <guid isPermaLink="true">http://hack.able.cd/b/2012/05/28/rename-google-drive-default-folder/</guid>
       <author></author>
       <description>&lt;p&gt;After I recently moved all my local software project’s repos into my Google Drive folder I started
 to notice problems with some of my Vim plug-ins. The problems were due to the fact that the Google
@@ -30,13 +30,13 @@ Drive app and then rename it.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; mv /Users/brandon/Google\ Drive /Users/brandon/GoogleBadassDrive
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Start Google Drive. You should see the below error message.&lt;/p&gt;
-&lt;p&gt; &lt;img src=&quot;http://hack.doom.lan:4000/b/2012/05/28/rename-google-drive-default-folder/google-drive-start-error.png&quot; alt=&quot;Google Drive start up error&quot;&gt;&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://hack.able.cd/b/2012/05/28/rename-google-drive-default-folder/google-drive-start-error.png&quot; alt=&quot;Google Drive start up error&quot;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Click the Error at the top of the Google Drive menu.&lt;/p&gt;
-&lt;p&gt; &lt;img src=&quot;http://hack.doom.lan:4000/b/2012/05/28/rename-google-drive-default-folder/google-drive-menu-error.png&quot; alt=&quot;Google Drive menu error&quot;&gt;&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://hack.able.cd/b/2012/05/28/rename-google-drive-default-folder/google-drive-menu-error.png&quot; alt=&quot;Google Drive menu error&quot;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Then hit the “Locate folder…” button.&lt;/p&gt;
-&lt;p&gt; &lt;img src=&quot;http://hack.doom.lan:4000/b/2012/05/28/rename-google-drive-default-folder/google-drive-locate-folder.png&quot; alt=&quot;Google Drive locate folder&quot;&gt;&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://hack.able.cd/b/2012/05/28/rename-google-drive-default-folder/google-drive-locate-folder.png&quot; alt=&quot;Google Drive locate folder&quot;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Finally select the renamed Google Drive folder and you are back in action.&lt;/p&gt;
 &lt;/li&gt;
@@ -45,9 +45,9 @@ Drive app and then rename it.&lt;/p&gt;
     </item>
     <item>
       <title>Vagrant: Broken Networking When Packaging Ubuntu Boxes</title>
-      <link>http://hack.doom.lan:4000/b/2012/04/09/vagrant-broken-networking-when-packaging-ubuntu-boxes/</link>
+      <link>http://hack.able.cd/b/2012/04/09/vagrant-broken-networking-when-packaging-ubuntu-boxes/</link>
       <pubDate>Mon, 09 Apr 2012 18:25:00 -0700</pubDate>
-      <guid isPermaLink="true">http://hack.doom.lan:4000/b/2012/04/09/vagrant-broken-networking-when-packaging-ubuntu-boxes/</guid>
+      <guid isPermaLink="true">http://hack.able.cd/b/2012/04/09/vagrant-broken-networking-when-packaging-ubuntu-boxes/</guid>
       <author></author>
       <description>&lt;p&gt;When packaging my &lt;a href=&quot;http://vagrantup.com/&quot;&gt;Vagrant&lt;/a&gt; virtual environment (Ubuntu server with a host-only
 network) to a box file I ran into a problem. The issue was that when I tried to use that box file the
@@ -88,9 +88,9 @@ file. This allows network adapters to be assigned device names without any MAC a
     </item>
     <item>
       <title>The reason I blog: Future-Me</title>
-      <link>http://hack.doom.lan:4000/b/2012/03/24/the-reason-i-blog-future-me/</link>
+      <link>http://hack.able.cd/b/2012/03/24/the-reason-i-blog-future-me/</link>
       <pubDate>Sat, 24 Mar 2012 02:30:00 -0700</pubDate>
-      <guid isPermaLink="true">http://hack.doom.lan:4000/b/2012/03/24/the-reason-i-blog-future-me/</guid>
+      <guid isPermaLink="true">http://hack.able.cd/b/2012/03/24/the-reason-i-blog-future-me/</guid>
       <author></author>
       <description>&lt;p&gt;Well it’s official, I’m starting to blog again. Recently I have been getting back into web
 development and in turn spending a lot of time researching and testing new technologies. I have been
