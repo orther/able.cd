@@ -9,6 +9,7 @@
 	{
     background-image: url('images/hexabump.png');
 		background-color: transparent;
+    padding: .75em 0;
   }
 
   #titleBar .title a,

@@ -43,16 +43,12 @@ html(lang='en')
             h2 Welcome to zombocom!
           block footer
             br
-            strong !!!PUT REAL FOOTER IN HERE!!!
+            //-strong !!!PUT REAL FOOTER IN HERE!!!
 
       #sidebar
         #logo
           h1
             a(href=locals.url)= locals.name
-
-        #mission.is-text-style1
-          .inner
-            = locals.mission
 
         nav#nav
           ul
@@ -67,6 +63,10 @@ html(lang='en')
           form(method='get', action='http://google.com/search')
             input(type="hidden", name="q", value="site:able.cd")
             input.text(type='text', name='q', results="0", placeholder='Search Site')
+
+        //-#mission.is-text-style1
+          .inner
+            = locals.mission
 
         //-section.is-recent-posts
           header
