@@ -50,14 +50,8 @@ html(lang='en')
           h1
             a(href=locals.url)= locals.name
 
-        nav#nav
-          ul
-            li.current_page_item
-              a(href='/') Blog
-            //-li
-              a(href='/projects.html') Projects
-            li
-              a(href='/about.html') About Me
+        block menu
+          include _menu.jade
 
         section.is-search
           form(method='get', action='http://google.com/search')

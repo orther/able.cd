@@ -1,0 +1,22 @@
+nav#nav
+  ul
+    - var locals_menu_items = _.defaults(locals, {"menu": []})["menu"]
+
+    - var reject_func     = function(v){return _.isUndefined(v.metadata.menu)}
+    - var sort_func       = function(v){return v.metadata.menu.order}
+    - var page_menu_items = _.chain(contents._.pages).reject(reject_func).sortBy(sort_func).map(function(v){return _.extend({"url": v["url"]}, v.metadata.menu)}).value();
+    - var menu_items      = locals_menu_items.concat(page_menu_items)
+
+    //- TODO: replace this giant hack
+    - var page_menu_title = "Blog"
+
+    - if (_.isObject(page) && _.has(page.metadata, "menu"))
+      - var page_menu_title  = page.metadata.menu.title 
+
+    - each item in menu_items
+      - if (page_menu_title === item.title)
+        li.current_page_item
+          a(href=item.url) #{item.title}
+      - else
+        li
+          a(href=item.url) #{item.title}

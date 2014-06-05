@@ -6,23 +6,11 @@
     "owner": "Brandon Orther",
     "mission": "Pursuing efficacy in the art of software development.",
     "description": "A blog archiving my experiences in software development and everything related to it. This site is for public consumption but, I'm betting future-me is going to use it more than most.",
-    "index_articles": 3,
     "menu" : [
       {
-        "name": "Blog",
-        "description": "Blog",
-        "url": "/"
-      },
-      {
-        "inactive": true,
-        "name": "Github",
-        "description": "My Gihub profile",
-        "url": "https://github.com/orther"
-      },
-      {
-        "name": "About Me",
-        "description": "Information about me",
-        "url": "/about.html"
+        "title": "Blog",
+        "url": "/",
+        "order": 0
       }
     ],
     "social": [
