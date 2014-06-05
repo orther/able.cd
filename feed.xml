@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ablecoder</title>
+    <atom:link href="http://hack.doom.lan:4000/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://hack.doom.lan:4000</link>
+    <description>A blog archiving my experiences in software development and everything related to it. This site is for public consumption but, I'm betting future-me is going to use it more than most.</description>
+    <pubDate>Mon, 28 May 2012 15:09:00 -0700</pubDate>
+    <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
+    <language>en</language>
+    <item>
+      <title>Rename Google Drive Default Folder</title>
+      <link>http://hack.doom.lan:4000/b/2012/05/28/rename-google-drive-default-folder/</link>
+      <pubDate>Mon, 28 May 2012 15:09:00 -0700</pubDate>
+      <guid isPermaLink="true">http://hack.doom.lan:4000/b/2012/05/28/rename-google-drive-default-folder/</guid>
+      <author></author>
+      <description>&lt;p&gt;After I recently moved all my local software project’s repos into my Google Drive folder I started
+to notice problems with some of my Vim plug-ins. The problems were due to the fact that the Google
+Drive folder has a space in it. So instead of doing what a good person should probably do and figure
+out why Vim wasn’t escaping the space in the folder name I tried to just remove the space. A quick
+scan of Google Drive preferences didn’t show any signs of the ability to change the folder name and
+when I tried to rename it in Finder I got an error. It turns out you just have to close the Google
+Drive app and then rename it.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;renaming-google-drive-folder-in-os-x&quot;&gt;Renaming Google Drive Folder in OS X&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Close Google Drive App&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Rename Google Drive Folder&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; mv /Users/brandon/Google\ Drive /Users/brandon/GoogleBadassDrive
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Start Google Drive. You should see the below error message.&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://hack.doom.lan:4000/b/2012/05/28/rename-google-drive-default-folder/google-drive-start-error.png&quot; alt=&quot;Google Drive start up error&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Click the Error at the top of the Google Drive menu.&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://hack.doom.lan:4000/b/2012/05/28/rename-google-drive-default-folder/google-drive-menu-error.png&quot; alt=&quot;Google Drive menu error&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Then hit the “Locate folder…” button.&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://hack.doom.lan:4000/b/2012/05/28/rename-google-drive-default-folder/google-drive-locate-folder.png&quot; alt=&quot;Google Drive locate folder&quot;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Finally select the renamed Google Drive folder and you are back in action.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    <item>
+      <title>Vagrant: Broken Networking When Packaging Ubuntu Boxes</title>
+      <link>http://hack.doom.lan:4000/b/2012/04/09/vagrant-broken-networking-when-packaging-ubuntu-boxes/</link>
+      <pubDate>Mon, 09 Apr 2012 18:25:00 -0700</pubDate>
+      <guid isPermaLink="true">http://hack.doom.lan:4000/b/2012/04/09/vagrant-broken-networking-when-packaging-ubuntu-boxes/</guid>
+      <author></author>
+      <description>&lt;p&gt;When packaging my &lt;a href=&quot;http://vagrantup.com/&quot;&gt;Vagrant&lt;/a&gt; virtual environment (Ubuntu server with a host-only
+network) to a box file I ran into a problem. The issue was that when I tried to use that box file the
+host-only network would not work.&lt;/p&gt;
+&lt;p&gt;With a little investigating I realized the problem was caused by the device name for the network
+adapter being &lt;code&gt;eth2&lt;/code&gt; instead of &lt;code&gt;eth1&lt;/code&gt;. Vagrant uses &lt;code&gt;eth1&lt;/code&gt; in the host-only network interface
+defined in the &lt;code&gt;/etc/network/interfaces&lt;/code&gt; file. Since &lt;code&gt;eth1&lt;/code&gt; network interface doesn’t
+exist (it is &lt;code&gt;eth2&lt;/code&gt;) our host-only network does not work.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;the-cause&quot;&gt;The Cause&lt;/h3&gt;
+&lt;p&gt;Ubuntu uses &lt;a href=&quot;http://wiki.debian.org/udev&quot;&gt;udev&lt;/a&gt; to dynamically set device names (&lt;code&gt;eth1&lt;/code&gt; for example).
+Ubuntu stores persistent udev rules for network devices in the
+&lt;code&gt;/etc/udev/rules.d/70-persistent-net.rules&lt;/code&gt; file. Below is the &lt;code&gt;70-persistent-net.rules&lt;/code&gt; file from
+the broken host-only network VM.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-bash&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# PCI device 0x8086:0x100e (e1000)&lt;/span&gt;
+SUBSYSTEM==&lt;span class=&quot;string&quot;&gt;&quot;net&quot;&lt;/span&gt;, ACTION==&lt;span class=&quot;string&quot;&gt;&quot;add&quot;&lt;/span&gt;, DRIVERS==&lt;span class=&quot;string&quot;&gt;&quot;?*&quot;&lt;/span&gt;, ATTR{address}==&lt;span class=&quot;string&quot;&gt;&quot;08:00:27:57:fd:7b&quot;&lt;/span&gt;, ATTR{dev_id}==&lt;span class=&quot;string&quot;&gt;&quot;0x0&quot;&lt;/span&gt;, ATTR{&lt;span class=&quot;built_in&quot;&gt;type&lt;/span&gt;}==&lt;span class=&quot;string&quot;&gt;&quot;1&quot;&lt;/span&gt;, KERNEL==&lt;span class=&quot;string&quot;&gt;&quot;eth*&quot;&lt;/span&gt;, NAME=&lt;span class=&quot;string&quot;&gt;&quot;eth0&quot;&lt;/span&gt;
+
+&lt;span class=&quot;comment&quot;&gt;# PCI device 0x8086:0x100e (e1000)&lt;/span&gt;
+SUBSYSTEM==&lt;span class=&quot;string&quot;&gt;&quot;net&quot;&lt;/span&gt;, ACTION==&lt;span class=&quot;string&quot;&gt;&quot;add&quot;&lt;/span&gt;, DRIVERS==&lt;span class=&quot;string&quot;&gt;&quot;?*&quot;&lt;/span&gt;, ATTR{address}==&lt;span class=&quot;string&quot;&gt;&quot;08:00:27:53:22:32&quot;&lt;/span&gt;, ATTR{dev_id}==&lt;span class=&quot;string&quot;&gt;&quot;0x0&quot;&lt;/span&gt;, ATTR{&lt;span class=&quot;built_in&quot;&gt;type&lt;/span&gt;}==&lt;span class=&quot;string&quot;&gt;&quot;1&quot;&lt;/span&gt;, KERNEL==&lt;span class=&quot;string&quot;&gt;&quot;eth*&quot;&lt;/span&gt;, NAME=&lt;span class=&quot;string&quot;&gt;&quot;eth1&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can see there exists a rule for &lt;code&gt;eth1&lt;/code&gt;. The reason the host-only network adapater is assigned
+&lt;code&gt;eth2&lt;/code&gt; instead of &lt;code&gt;eth1&lt;/code&gt; is because it’s MAC address doesn’t match the udev rule. The reason the MAC
+address doesn’t match is because when Vagrant creates a new VM (from the box file) VirtualBox by
+default generates a random MAC address for that network adapter.&lt;/p&gt;
+&lt;h3 id=&quot;the-solution&quot;&gt;The Solution&lt;/h3&gt;
+&lt;p&gt;The solution is to remove the persitant network udev rules immediately before you package the box
+file. This allows network adapters to be assigned device names without any MAC address issues.&lt;/p&gt;
+&lt;h4 id=&quot;packaging-steps&quot;&gt;Packaging Steps&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;SSH into running VM and remove the persistant network udev rules file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; sudo rm /etc/udev/rules.d/70-persistent-net.rules
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Shutdown the VM and package it:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; vagrant halt &amp;amp;&amp;amp; vagrant package
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    <item>
+      <title>The reason I blog: Future-Me</title>
+      <link>http://hack.doom.lan:4000/b/2012/03/24/the-reason-i-blog-future-me/</link>
+      <pubDate>Sat, 24 Mar 2012 02:30:00 -0700</pubDate>
+      <guid isPermaLink="true">http://hack.doom.lan:4000/b/2012/03/24/the-reason-i-blog-future-me/</guid>
+      <author></author>
+      <description>&lt;p&gt;Well it’s official, I’m starting to blog again. Recently I have been getting back into web
+development and in turn spending a lot of time researching and testing new technologies. I have been
+away from web development for under a year (I’ve been more focused on the Dev and DevOps of my
+company’s cross-platform mobile apps for the last 11-months) and its amazing how much new cool shit
+is out. That includes the blogging framework &lt;a href=&quot;http://octopress.org/&quot;&gt;Octopress 2.0&lt;/a&gt; I am using for this
+site.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;blogging-for-tomorrow-&quot;&gt;Blogging For Tomorrow!&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The older I get the more Future-Me likes the decisions Past-Me makes. In college, I was just an evil asshole to Future-Me.&lt;/p&gt;
+&lt;footer&gt;&lt;strong&gt;@AbleCoder&lt;/strong&gt; - &lt;a href=&quot;https://twitter.com/#!/AbleCoder/status/183474986961485824&quot;&gt;https://twitter.com/#!/AbleCoder/status/183474986961485824&lt;/a&gt; &lt;/footer&gt;
+
+&lt;/blockquote&gt;
+&lt;p&gt;As nice as it is to explore all these new projects it can be a time consuming process. A lot of that
+time spent is NOT playing with or testing the new technology, instead it is spent getting it setup.
+I have put many hours into many projects learning how to get a certain technology working. The biggest
+problem I have with all this invested time is that it is more often than not, lost. Just a few weeks
+(or even days in some cases) of not working with a newly learned technology and I am sure to forget
+a lot. This blog is a gift to Future-Me. This blog will document what I already learned so
+Future-Me doesn’t have to learn it all over again… The slow way.&lt;/p&gt;
+&lt;p&gt;Hopefully at some point others will find value in my writings but, until then I am perfectly
+content writing these articles for that bad-ass, good-looking, Future-Me.&lt;/p&gt;
+&lt;h3 id=&quot;until-then-&quot;&gt;Until Then…&lt;/h3&gt;
+&lt;p&gt;No one will see this site (for now anyways) so there is no harm in putting in this &lt;em&gt;codeblock&lt;/em&gt; for
+testing purposes.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Example CoffeeScript Function Context Binding&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-coffeescript&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;title&quot;&gt;Account&lt;/span&gt; = &lt;span class=&quot;params&quot;&gt;(customer, cart)&lt;/span&gt; -&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;property&quot;&gt;@customer&lt;/span&gt; = customer
+    &lt;span class=&quot;property&quot;&gt;@cart&lt;/span&gt; = cart
+
+    $&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;string&quot;&gt;'.shopping_cart'&lt;/span&gt;)&lt;/span&gt;.&lt;span class=&quot;title&quot;&gt;bind&lt;/span&gt; '&lt;span class=&quot;title&quot;&gt;click&lt;/span&gt;', &lt;span class=&quot;params&quot;&gt;(event)&lt;/span&gt; =&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;property&quot;&gt;@customer&lt;/span&gt;.purchase &lt;span class=&quot;property&quot;&gt;@cart&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+  </channel>
+</rss>

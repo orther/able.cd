@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="http://hack.doom.lan:4000">
+    <title>Vagrant: Broken Networking When Packaging Ubuntu Boxes - ablecoder
+    </title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700|Open+Sans+Condensed:300,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/highlightjs/tomorrow-night.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/skel-panels.min.js"></script>
+    <script src="js/init.js"></script>
+    <noscript>
+      <link rel="stylesheet" href="css/skel-noscript.css">
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/style-desktop.css">
+      <link rel="stylesheet" href="css/style-wide.css">
+    </noscript>
+    <!--if lte IE 9link(rel='stylesheet', href='css/ie9.css')
+    -->
+    <!--if lte IE 8
+    script(src='js/html5shiv.js')
+    link(rel='stylesheet', href='css/ie8.css')
+    -->
+    <!--if lte IE 7link(rel='stylesheet', href='css/ie7.css')
+    -->
+    <link rel="alternate" href="http://hack.doom.lan:4000/feed.xml" type="application/rss+xml" title="A blog archiving my experiences in software development and everything related to it. This site is for public consumption but, I'm betting future-me is going to use it more than most.">
+  </head>
+  <body class="article-detail left-sidebar">
+    <div id="wrapper">
+      <div id="content">
+        <div id="content-inner">
+                    <article class="false is-post">
+                      <header>
+                        <h2><a href="/b/2012/04/09/vagrant-broken-networking-when-packaging-ubuntu-boxes/">Vagrant: Broken Networking When Packaging Ubuntu Boxes</a></h2>
+                      </header>
+                      <div class="info">
+                                  <!--
+                                  Note: The date should be formatted exactly as it's shown below. In particular, the
+                                  "least significant" characters of the month should be encapsulated in a <span>
+                                  element to denote what gets dropped in 1200px mode (eg. the "uary" in "January").
+                                  Oh, and if you don't need a date for a particular page or post you can simply delete
+                                  the entire "date" element.
+                                  --><span class="date"><span class="month">Apr<span>il</span> </span><span class="day">10</span><span class="year"><span class="comma">, </span>2012</span></span>
+                      </div><p>When packaging my <a href="http://vagrantup.com/">Vagrant</a> virtual environment (Ubuntu server with a host-only
+network) to a box file I ran into a problem. The issue was that when I tried to use that box file the
+host-only network would not&nbsp;work.</p>
+<p>With a little investigating I realized the problem was caused by the device name for the network
+adapter being <code>eth2</code> instead of <code>eth1</code>. Vagrant uses <code>eth1</code> in the host-only network interface
+defined in the <code>/etc/network/interfaces</code> file. Since <code>eth1</code> network interface doesn’t
+exist (it is <code>eth2</code>) our host-only network does not&nbsp;work.</p>
+<p><span class="more"></p>
+<h3 id="the-cause">The&nbsp;Cause</h3>
+<p>Ubuntu uses <a href="http://wiki.debian.org/udev">udev</a> to dynamically set device names (<code>eth1</code> for example).
+Ubuntu stores persistent udev rules for network devices in the
+<code>/etc/udev/rules.d/70-persistent-net.rules</code> file. Below is the <code>70-persistent-net.rules</code> file from
+the broken host-only network&nbsp;<span class="caps">VM</span>.</p>
+<pre><code class="lang-bash"><span class="comment"># <span class="caps">PCI</span> device 0x8086:0x100e (e1000)</span>
+<span class="caps">SUBSYSTEM</span>==<span class="string">"net"</span>, <span class="caps">ACTION</span>==<span class="string">"add"</span>, <span class="caps">DRIVERS</span>==<span class="string">"?*"</span>, <span class="caps">ATTR</span>{address}==<span class="string">"08:00:27:57:fd:7b"</span>, <span class="caps">ATTR</span>{dev_id}==<span class="string">"0x0"</span>, <span class="caps">ATTR</span>{<span class="built_in">type</span>}==<span class="string">"1"</span>, <span class="caps">KERNEL</span>==<span class="string">"eth*"</span>, <span class="caps">NAME</span>=<span class="string">"eth0"</span>
+
+<span class="comment"># <span class="caps">PCI</span> device 0x8086:0x100e (e1000)</span>
+<span class="caps">SUBSYSTEM</span>==<span class="string">"net"</span>, <span class="caps">ACTION</span>==<span class="string">"add"</span>, <span class="caps">DRIVERS</span>==<span class="string">"?*"</span>, <span class="caps">ATTR</span>{address}==<span class="string">"08:00:27:53:22:32"</span>, <span class="caps">ATTR</span>{dev_id}==<span class="string">"0x0"</span>, <span class="caps">ATTR</span>{<span class="built_in">type</span>}==<span class="string">"1"</span>, <span class="caps">KERNEL</span>==<span class="string">"eth*"</span>, <span class="caps">NAME</span>=<span class="string">"eth1"</span>
+</code></pre>
+<p>You can see there exists a rule for <code>eth1</code>. The reason the host-only network adapater is assigned
+<code>eth2</code> instead of <code>eth1</code> is because it’s <span class="caps">MAC</span> address doesn’t match the udev rule. The reason the MAC
+address doesn’t match is because when Vagrant creates a new VM (from the box file) VirtualBox by
+default generates a random MAC address for that network&nbsp;adapter.</p>
+<h3 id="the-solution">The&nbsp;Solution</h3>
+<p>The solution is to remove the persitant network udev rules immediately before you package the box
+file. This allows network adapters to be assigned device names without any <span class="caps">MAC</span> address&nbsp;issues.</p>
+<h4 id="packaging-steps">Packaging&nbsp;Steps</h4>
+<ol>
+<li><p><span class="caps">SSH</span> into running VM and remove the persistant network udev rules&nbsp;file:</p>
+<pre><code> sudo rm /etc/udev/rules.d/70-persistent-net.rules
+</code></pre></li>
+<li><p>Shutdown the <span class="caps">VM</span> and package&nbsp;it:</p>
+<pre><code> vagrant halt &amp;&amp; vagrant package
+</code></pre></li>
+</ol>
+
+                    </article>
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                      var disqus_shortname = 'ablecoder'; // required: replace example with your forum shortname
+                      (function() {
+                           var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                           (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                       })();
+                    </script>
+                    <noscript>
+                      Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+                      <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                    </noscript><br>
+        </div>
+      </div>
+      <div id="sidebar">
+        <div id="logo">
+          <h1><a href="http://hack.doom.lan:4000">ablecoder</a></h1>
+        </div>
+        <nav id="nav">
+          <ul>
+            <li class="current_page_item"><a href="/">Blog</a></li>
+            <li><a href="/about.html">About Me</a></li>
+          </ul>
+        </nav>
+        <section class="is-search">
+          <form method="get" action="http://google.com/search">
+            <input type="hidden" name="q" value="site:able.cd">
+            <input type="text" name="q" results="0" placeholder="Search Site" class="text">
+          </form>
+        </section>
+        <div id="copyright">
+          <p>&copy; 2014 Brandon Orther<br>Generated by: <a href="http://wintersmith.io/">Wintersmith</a><br>Design: <a href="http://html5up.net/striped">HTML5 UP</a></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
