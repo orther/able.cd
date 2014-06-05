@@ -16,7 +16,8 @@
     "wintersmith": "~2.0.10",
     "gulp-debug": "~0.3.0",
     "cheerio": "~0.16.0",
-    "marked": "~0.3.2"
+    "marked": "~0.3.2",
+    "gulp-gh-pages": "~0.3.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

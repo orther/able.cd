@@ -10,17 +10,18 @@
 var gulp = require('gulp');
 
 // Include plugins
-var clean = require('gulp-clean');
-var refresh = require('gulp-livereload');
+var clean          = require('gulp-clean');
+var deploy         = require("gulp-gh-pages");
+var lr             = require('tiny-lr');
+var refresh        = require('gulp-livereload');
 var runWintersmith = require('run-wintersmith');
-var lr = require('tiny-lr');
+
 var server = lr();
 
 // run-wintersmith Settings
 runWintersmith.settings.hostname = 'hack.doom.lan';
 runWintersmith.settings.port = 4000;
 //runWintersmith.settings.configFile = 'myConfig.json';
-
 
 //
 // Directories
@@ -85,4 +86,12 @@ gulp.task('watch', ['preview', 'lr-server'], function(){
 
     // Watch Markdown files
     gulp.watch(CONTENT_DIR + '/**', ['refresh-browser']);
+});
+
+//
+// Deploy task
+//
+gulp.task('deploy', ['build'], function () {
+    gulp.src(BUILD_DIR + "/**")
+        .pipe(deploy());
 });
