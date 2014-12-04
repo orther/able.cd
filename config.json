@@ -1,7 +1,7 @@
 {
   "port": 4000,
   "locals": {
-    "url": "http://hack.able.cd",
+    "url": "http://able.cd",
     "name": "ablecoder",
     "owner": "Brandon Orther",
     "mission": "Pursuing efficacy in the art of software development.",
